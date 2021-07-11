@@ -1,0 +1,7 @@
+﻿@model SinemaBiletOtomasyonu.Models.Siniflar.Film
+
+<div class="col-3">
+    <label class="labels">Seans Seçiniz</label>
+    @Html.DropDownListFor(x => x.FilmID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+</div>
+

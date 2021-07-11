@@ -1,0 +1,6 @@
+﻿@model SinemaBiletOtomasyonu.Models.Siniflar.Salon
+
+<div class="col-3">
+    <label class="labels">Salon Seçiniz</label>
+    @Html.DropDownListFor(x => x.SalonID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+</div>

@@ -1,0 +1,33 @@
+﻿@model SinemaBiletOtomasyonu.Models.Siniflar.Sinema
+
+@{
+    ViewBag.Title = "SinemaEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Film Ekle</h2>
+<br />
+
+@using (Html.BeginForm("SinemaEkle", "Sinema", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<table>
+    <tr>
+        <td>@Html.LabelFor(x => x.SinemaAdi)</td>
+        <td>
+            @Html.TextBoxFor(x => x.SinemaAdi,
+            new { @class = "form-kontrol" })
+        </td>
+    </tr>
+    <tr>
+        <td> @Html.LabelFor(x => x.Sehir)</td>
+        <td> @Html.DropDownListFor(x => x.Plaka, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control", @style = "width: 185px;" })</td>
+    </tr>
+    
+
+</table>
+    <button class="btn btn-info">Ekle</button>
+
+}
+
+

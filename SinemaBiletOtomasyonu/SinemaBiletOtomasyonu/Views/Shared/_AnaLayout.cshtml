@@ -1,0 +1,526 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link href="https://cdn.lineicons.com/2.0/LineIcons.css" rel="stylesheet" />
+    <link href="~/Content/bootstrapcss/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrapcss/bootstrap-grid.rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrapcss/bootstrap-reboot.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrapcss/bootstrap-reboot.rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrapcss/bootstrap-utilities.rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrapcss/bootstrap-utilities.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrapcss/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrapcss/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrapcss/bootstrap.rtl.min.css" rel="stylesheet" />
+    <link href="~/Content/Css/stil.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+   
+        <script src="~/Content/js/owl.carousel.min.js" > </script>
+        <script src="~/Content/js/app.js"> </script>
+        <link href="~/Content/owl-carousel/assets/owl.carousel.min.css" rel="stylesheet"/>
+        <link href="~/Content/owl-carousel/assets/owl.theme.default.min.css" rel="stylesheet"/>
+        <link href="~/Content/owl-carousel/assets/owl.theme.green.min.css" rel="stylesheet"/>
+    
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <title>Anasayfa</title>
+
+    <style>
+    </style>
+    <style>
+        .dugme {
+            cursor: pointer;
+            display: inline-block;
+            padding: 5px 10px;
+            background: #eee;
+            border: 1px solid #d8d8d8;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #444;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        [name="kapat"] {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .pencere {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 800px;
+            height: 400px;
+            background: #fff;
+            box-shadow: 0 0 6px 2px rgba(0,0,0,0.4);
+            opacity: 0;
+            transition: opacity 0.6s ease-out;
+            z-index: -1;
+            padding: 10px;
+            -webkit-border-radius: 3px;
+            border-radius: 3px;
+            margin: -150px 0 0 -200px;
+            -webkit-scrollbar;
+        }
+
+        .Pencereac {
+            width: 1px;
+            height: 1px;
+            visibility: hidden;
+        }
+
+            .Pencereac:checked + .pencere {
+                top: 50%;
+                left: 50%;
+                display: block;
+                z-index: 9;
+                opacity: 1;
+            }
+    </style>
+
+</head>
+
+<body>
+    <div class="video-container">
+        <video autoplay=autoplay loop=loop muted=muted id="video-bg">
+
+            <source src="video/mubi.mp4" type="video/mp4" />
+
+        </video>
+    </div>
+
+
+    <nav class="navbar navbar-expand-lg py-2 navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/Home/Index">
+                <img src="~/images/logo.png" alt="" width="50" height="40" class="d-inline-block align-top" /><font size="5">
+                    SinemaDevi
+                </font>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item px-2">
+                        <a class="nav-link active" aria-current="page" href="/Home/Index"><i class="lni lni-home"></i><font size="4">&nbsp;Anasayfa</font></a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="/Haber/Index"><i class="lni lni-video"></i><font size="4">&nbsp;Vizyonda</font></a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="/Home/Sosyal"><i class="lni lni-world"></i><size ="4">&nbsp;Sosyal</font></size></a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link " href="/BiletDetay/Index"><i class="lni lni-ticket"></i><font size="4">&nbsp;Bilet Al</font></a>
+                    </li>
+                </ul>
+
+
+                <form class="d-flex">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-right">
+
+                        @{
+                            if (Session["ePosta"] != null)
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Profil
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                                        <li><a class="dropdown-item" href="/Home/Profil">Profilim</a></li>
+                                        <li><a class="dropdown-item" href="biletlerim.html">Biletlerim</a></li>
+                                        <li><hr class="dropdown-divider" /></li>
+                                        <li><a class="dropdown-item" href="/Home/HomeLogOut/">Çıkış Yap</a></li>
+                                    </ul>
+                                </li>
+
+                            }
+                            else
+                            {
+                                @*<li class="nav-item px-2">
+                    <a class="nav-link" aria-current="page" href="" data-bs-toggle="modal" data-bs-target="#exampleModal536"><i class="lni lni-lock"></i>&nbsp;Üye Girişi</a>
+                </li>*@
+                                <li class="nav-item px-2">
+                                    <a class="nav-link" href="/Home/MusteriLogin"><i class="lni lni-consulting"></i><font size="4">&nbsp;Giriş</font></a>
+                                </li>
+                            }
+                        }
+
+
+                    </ul>
+                </form>
+
+            </div>
+        </div>
+
+    </nav>
+    <!--  ORTA KISIM  -->
+    <!--login-->
+
+    <div class="modal fade" id="exampleModal536" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen-sm-down">
+            <div class="modal-content">
+                <div class="modal-header  text-center">
+                    <h3 class="modal-title w-100" id="exampleModalLabel">
+                        <h5>SinemaDevi</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </h3>
+                </div>
+                <div class="modal-body" align="center">
+
+
+                    <div class="card" style="width: 30rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Giriş Yap</h5>
+                            <p class="card-text">
+                                <form class="col-6">
+                                    @using (Html.BeginForm("MusteriLogin", "Login", FormMethod.Post))
+                                    {
+                                        <div class="form-group">
+                                            <input type="email" name="ePosta" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mail adresinizi girin" />
+
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">-</label>
+                                            <input type="password" name="Sifre" class="form-control" id="exampleInputPassword1" placeholder="Şifreyi girin" />
+                                        </div>
+
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
+                                            <label class="form-check-label" for="flexSwitchCheckDefault">Beni Hatırla</label>
+                                        </div>
+
+                                        <button type="submit" class="btn btn-dark">Giriş Yap</button>
+                                        <a href="/Login/KayitOl" target="_blank" class="btn btn-dark">Kayıt Ol</a>
+                                    }
+                                </form>
+                            </p>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="modal-footer">
+                    <div class="col text-center">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Çıkış</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @RenderBody()
+
+
+    <!-- footer -->
+    <footer class="text-center text-lg-start" style="background-color:#181818">
+        <!-- Grid container -->
+        <div class="container p-4" style="background-color:#181818">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+
+                    <!--Google map-->
+                    <div id="map-container-google-1" class="z-depth-1-half map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3044.373260186112!2d29.07994491488966!3d40.267457972629224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14ca40653791a2d5%3A0xd25ecfe140a173f2!2sBUTGEM%20BTSO%20E%C4%9Fitim%20Vakf%C4%B1!5e0!3m2!1str!2str!4v1612769285949!5m2!1str!2str" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                    </div>
+
+                    <!--Google Maps-->
+
+
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-light mb-0">Topluluk</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <a href="/Home/Hakkimizda" target="_blank" class="text-light">Hakkımızda</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-light" data-bs-toggle="modal" data-bs-target="#exampleModal538">Yorum ve Öneriler</a>
+                        </li>
+                        <li>
+                            <a href="#!" class="text-light" data-bs-toggle="modal" data-bs-target="#exampleModal537">Bağış</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="modal fade" id="exampleModal537" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen-sm-down">
+                        <div class="modal-content">
+                            <div class="modal-header  text-center">
+                                <h3 class="modal-title w-100" id="exampleModalLabel">
+                                    Bağış Yap</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </h3>
+                            </div>
+                            <div class="modal-body" align="center">
+
+                                <b>Almanya :</b> DE75512108001245126199<br />
+                                <b>Belçika :</b> BE71096123456769<br />
+                                <b>Fransa  :</b> FR7630006000011234567890189<br />
+                                <b>Türkiye :</b> TR320010009999901234567890<br />
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <div class="col text-center">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Çıkış</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!---->
+                <div class="modal fade" id="exampleModal538" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-fullscreen-sm-down">
+                        <div class="modal-content">
+                            <div class="modal-header  text-center">
+                                <h3 class="modal-title w-100" id="exampleModalLabel">
+                                    Öneride Bulun</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </h3>
+                            </div>
+                            <div class="modal-body" align="center">
+
+                                Bu pencereden önerilerini bize üye olmadan anonim bir şekilde iletebilirsin. <br /><br />
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <div class="col text-center">
+
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Çıkış</button>
+                                    <a href="#" class="btn btn-dark">Gönder</a>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-light">Destek</h5>
+
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="/Home/Iletisim" class="text-light" target="_blank">İletişim</a>
+                        </li>
+                        <li>
+                            <a href="/Home/Yardim" class="text-light" target="_blank">Yardım</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!--Grid column-->
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal101">
+                                Çerez Politikası
+                            </button>
+
+                            <div class="modal fade" id="exampleModal101" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-fullscreen-xxl-down">
+                                    <div class="modal-content">
+                                        <div class="modal-header  text-center">
+                                            <h3 class="modal-title w-100" id="exampleModalLabel">
+                                                Çerez Politikası</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </h3>
+                                        </div>
+                                        <div class="modal-body" align="justify">
+
+
+                                            <p>
+                                                Çerez Politikamız, Gizlilik Politikamızın bir parçasını oluşturur. (Gizlilik Politikamız yazan yere kendi gizlilik politikanızın linkini vermelisiniz.)
+                                            </p>
+                                            Çerez (Cookie) Nedir?
+                                            <p>
+                                                Günümüzde neredeyse her web sitesi çerez kullanmaktadır. Size daha iyi, hızlı ve güvenli bir deneyim sağlamak için, çoğu internet sitesi gibi biz de çerezler kullanıyoruz. Çerez, bir web sitesini ziyaret ettiğinizde cihazınıza (örneğin; bilgisayar veya cep telefonu) depolanan küçük bir metin dosyasıdır. Çerezler, bir web sitesini ilk ziyaretiniz sırasında tarayıcınız aracılığıyla cihazınıza depolanabilirler. Aynı siteyi aynı cihazla tekrar ziyaret ettiğinizde tarayıcınız cihazınızda site adına kayıtlı bir çerez olup olmadığını kontrol eder. Eğer kayıt var ise, kaydın içindeki veriyi ziyaret etmekte olduğunuz web sitesine iletir. Bu sayede web sitesi, sizin siteyi daha önce ziyaret ettiğinizi anlar ve size iletilecek içeriği de ona göre tayin eder.
+                                            </p>
+                                            Çerezler Neden Kullanılır?
+                                            <p>
+                                                Bazı çerezler, daha önceki ziyaretlerinizde kullandığınız tercihlerin web sitesi tarafından hatırlanmasını sağlayarak, sonraki ziyaretlerinizin çok daha kullanıcı dostu ve kişiselleştirilmiş bir deneyim sunmasını sağlar.
+                                            </p>
+                                            <p>
+                                                Ayrıca, web sitesinde bulunan üçüncü taraflara ait linkler, bu üçüncü taraflara ait gizlilik politikalarına tabi olmakla birlikte, gizlilik uygulamalarına ait sorumluluk ornekalanadi.com’a ait olmamaktadır ve bu bağlamda ilgili link kapsamındaki site ziyaret edildiğinde siteye ait gizlilik politikasının okunması önerilmektedir.
+                                            </p>
+                                            Çerez Türleri
+                                            <p>
+                                                Ana kullanım amacı kullanıcılara kolaylık sağlamak olan çerezler, temel olarak 4 ana grupta toplanmaktadır:
+                                            </p>
+                                            <p>
+                                                Oturum Çerezleri: Internet sayfaları arasında bilgi taşınması ve kullanıcı tarafından girilen bilgilerin sistemsel olarak hatırlanması gibi çeşitli özelliklerden faydalanmaya olanak sağlayan çerezlerdir ve internet sitesine ait fonksiyonların düzgün bir şekilde işleyebilmesi için gereklidir.
+                                                Performans Çerezleri: Sayfaların ziyaret edilme frekansı, olası hata iletileri, kullanıcıların ilgili sayfada harcadıkları toplam zaman ile birlikte siteyi kullanım desenleri konularında bilgi toplayan çerezlerdir ve internet sitesinin performansını arttırma amacıyla kullanılmaktadır.
+                                                Fonksiyonel Çerezler: Kullanıcıya kolaylık sağlanması amacıyla önceden seçili olan seçeneklerin hatırlatılmasını sağlayan çerezlerdir ve internet sitesi kapsamında kullanıcılara gelişmiş Internet özellikleri sağlanmasını hedeflemektedir.
+                                                Reklam Ve Üçüncü Taraf Çerezleri: Üçüncü parti tedarikçilere ait çerezlerdir ve internet sitesindeki bazı fonksiyonların kullanımına ve reklam takibinin yapılmasına olanak sağlamaktadır.
+                                            </p>
+                                            Çerezlerin Kullanım Amaçları
+                                            <p>
+                                                SinemaDevi.com tarafından kullanılmakta olan çerezlere ait kullanım amaçları aşağıdaki gibidir:
+                                            </p>
+                                            <p>
+                                                Güvenlik amaçlı kullanımlar:  SinemaDevi.com, sistemlerinin idaresi ve güvenliğinin sağlanması amacıyla, bu sitedeki fonksiyonlardan yararlanmayı sağlayan veyahut düzensiz davranışları tespit eden çerezler kullanabilmektedir.
+                                                İşlevselliğe yönelik kullanımlar:  SinemaDevi.com, sistemlerinin kullanımını kolaylaştırmak ve kullanıcı özelinde kullanım özellikleri sağlamak amacıyla, kullanıcıların bilgilerini ve geçmiş seçimlerini hatırlatan çerezler kullanabilmektedir.
+                                                Performansa yönelik kullanımlar:  SinemaDevi.com, sistemlerinin performansının artırılması ve ölçülmesi amacıyla, gönderilen iletilerle olan etkileşimi ve kullanıcı davranışlarını değerlendiren ve analiz eden çerezler kullanabilmektedir.
+                                                Reklam amaçlı kullanımlar:  SinemaDevi.com, kendine veya üçüncü taraflara ait sistemlerin üzerinden kullanıcıların ilgi alanları kapsamında reklam ve benzeri içeriklerin iletilmesi amacıyla, bu reklamların etkinliğini ölçen veya tıklanma durumunu analiz eden çerezler kullanabilmektedir.
+                                                Reklam Amaçlı Çerez Kullanımımız
+                                            </p>
+                                            <p>
+                                                SinemaDevi.com, Google Adsense reklam sistemi kullanmaktadır. Bu sistem Google tarafından İçerik için AdSense reklamlarının görüntülendiği yayıncı web sitelerinde sunulan reklamlarda kullanalan DoubleClick DART çerezi içerir.
+
+                                                Üçüncü taraf satıcı olarak Google, sitemizde reklam yayınlamak için çerezlerden yararlanır. Bu çerezlerini kullanarak kullanıcılarınıza, sitenize ve İnternet’teki diğer sitelere yaptıkları ziyaretlere dayalı reklamlar sunar. Google reklam ve içerik ağı gizlilik politikasını ziyaret ederek DART çerezinin kullanılmasını engelleyebilirsiniz.
+
+                                                Google Web sitemizi ziyaret ettiği zamanlarda reklam hizmeti vermek için üçüncü taraf reklam şirketlerini kullanmaktadır. Söz konusu şirketler, bu sitelere ve diğer web sitelerine yaptığınız ziyaretlerden elde ettikleri (adınız, adresiniz, e-posta adresiniz veya telefon numaranız dışındaki) bilgileri ilginizi çekecek ürün ve hizmetlerin reklamını size göstermek için kullanabilir. Bu uygulama hakkında bilgi edinmek için ve söz konusu bilgilerin bu şirketler tarafından kullanılmasını engellemek üzere seçeneklerinizin neler olduğunu öğrenmek ve daha fazla bilgi için NAI Self-Regulatory principles for publishers (PDF) belgesinin A Eki’nden yararlanabilirsiniz.
+                                            </p>
+                                            Çerezleri Kontrol Etme ve Silme
+                                            <p>
+                                                Çerezlerin kullanımına ilişkin tercihlerinizi değiştirmek ya da çerezleri engellemek veya silmek için tarayıcınızın ayarlarını değiştirmeniz yeterlidir. Birçok tarayıcı çerezleri kontrol edebilmeniz için size çerezleri kabul etme veya reddetme, yalnızca belirli türdeki çerezleri kabul etme ya da bir web sitesi cihazınıza çerez depolamayı talep ettiğinde tarayıcı tarafından uyarılma seçeneği sunar. Aynı zamanda daha önce tarayıcınıza kaydedilmiş çerezlerin silinmesi de mümkündür. Çerezleri kontrol edilmesine veya silinmesine ilişkin işlemler kullandığınız tarayıcıya göre değişebilmektedir. Bazı popüler tarayıcıların çerezlere izin verme ya da çerezleri engelleme veya silme talimatlarına aşağıdaki linklerden ulaşılması mümkündür.
+
+                                                Çerez kullanım seçiminin değiştirilmesine ait yöntem, tarayıcı tipine bağlı olarak değişmekte olup, ilgili hizmet sağlayıcıdan dilendiği zaman öğrenilebilmektedir.
+                                            </p>
+                                            Bu politikanın en son güncellendiği tarih: 12/02/2021
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="col text-center">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Çıkış</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                        <br />
+
+
+                        <li>
+
+                            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal100">
+
+                                Kvkk Gizlilik Sözleşmesi
+                            </button>
+
+                            <div class="modal fade" id="exampleModal100" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-fullscreen-xxl-down">
+                                    <div class="modal-content">
+                                        <div class="modal-header  text-center">
+                                            <h3 class="modal-title w-100" id="exampleModalLabel">
+                                                KİŞİSEL VERİLERİN KORUNMASI KANUNU(6698 S.K.) KAPSAMI VE GENEL GİZLİLİK SÖZLEŞMESİ </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </h3>
+                                        </div>
+                                        <div class="modal-body" align="justify">
+
+
+                                            1- TARAFLAR<br />
+                                            <p>Bir tarafta FEREL ELEKTRONİK ve grup şirketleri (bu sözleşmede kısaca “İŞVEREN” olarak anılacaktır.)   Diğer tarafta, veri paylaşılan, müşteriler ve tedarikçiler ile ürün servisleri, distribütörler, bayiler, çalışanlar, çalışan adayları, stajyerler, servis sağlayıcıları ve danışmanlar (bu sözleşmede kısaca “ÇALIŞANLAR VE DİĞERLERİ” olarak anılacaktır.) aralarında aşağıdaki koşullarda anlaşmışlardır.</p>
+                                            2- SÖZLEŞMENİN KONUSU
+                                            <p>Taraflar arasından akdedilen yazılı veya sözlü hizmet sözleşmesinin (bundan böyle “HİZMET SÖZLEŞMESİ” olarak anılacaktır.) eki niteliğindeki işbu sözleşmenin konusu, hizmet sözleşmesi kapsamında işçiler ve diğerleri tarafından yürütülen çalışmalar ile ilgili olarak işçiler ve diğerlerine işveren (Veri Sorumlusu) tarafından verilen bilgi ve belgelerin işverenin onayı veya işçiler ve diğerlerinin açık rıza beyanı olmaksızın kişisel verilerin, özel nitelikli kişisel verilerin ve genel verilerin herhangi bir üçüncü gerçek ve/veya tüzel kişiye açıklanmasının, erişmesinin, verilmesinin, sızdırılmasının önüne geçecek olan gizliliğin sınırlarının ve koşullarının belirlenmesidir.  </p>
+                                            3- GİZLİ BİLGİNİN TANIMI <p> Kişisel Verilerin Korunması Kanunu kapsamında tanımını bulan kişiye ait bilgiler ile Kimliği belirli veya belirlenebilir gerçek kişiye ilişkin her türlü bilgi, Kimliği belirli veya belirlenebilir gerçek kişiye ilişkin her türlü sağlık bilgisi, Kişilerin ırkı, etnik kökeni, siyasi düşüncesi, felsefi inancı, dini, mezhebi veya diğer inançları, kılık ve kıyafeti, dernek, vakıf ya da sendika üyeliği, sağlığı, cinsel hayatı, ceza mahkûmiyeti ve güvenlik tedbirleriyle ilgili verileri ile biyometrik ve genetik veriler. Hizmet sözleşmesinde tanımlanan işler/görevler/hizmetler esnasında işveren tarafından                   işçiye açıklanan fikir, proje, uzmanlık bilgileri, tasarım, buluş, iş metodu ve patent, telif hakkı, marka, ticari sır, know how ya da diğer yasal korunmaya konu olan ya da olmayan her türlü yenilik ve çalışma esnasında öğrenilecek yazılı veya sözlü tüm ticari, mali, teknik bilgiler ve iletişim yöntemleri gizli bilgi olarak kabul edilir.    </p>
+                                            4- TARAFLARIN YÜKÜMLÜLÜKLERİ<p>4.1.  İşveren hizmet sözleşmesi kapsamında işçiye işini tam ve eksiksiz olarak yerine getirebilmesi ve gerekli her türlü bilgi ve belgeyi işçiye vermeyi taahhüt eder.   </p>
+                                            <p>4.2. İşveren işçiye ve diğerlerine açıklanan gizli bilgilerin eksik ya da hatalı olması sebebiyle ortaya çıkabilecek olan eksiklik, gecikme veya aksaklıklardan dolayı işçinin sorumlu tutulamayacağını kabul ve taahhüt eder.  </p>
+                                            <p>4.3  İşçi ve diğerlerine işveren tarafından kendisine açıklanan bilgi ve belgelerin gizli olduğunu bildiğini ve bu nedenle söz konusu gizli bilgileri sadece kendisinin bileceğini ve işin yerine getirilmesi aşamasında katkıda bulunması muhtemel üçüncü kişi, kurum ya da kuruluşların gizli bilgilerden sadece işin gereği kadar haberdar olacaklarını, işbu bilgi ve belgelerin hiçbir şekilde işverenin izni olmaksızın üçüncü gerçek ve/veya tüzel kişi ve kuruluşlara çalışma amaçları dışında açıklanmayacağını kabul ve taahhüt eder.  </p>
+
+                                            <p>4.4.  İşçi ve diğerleri işin yerine getirilmesi aşamasında katkıda bulunması muhtemel üçüncü kişi, kurum ya da kuruluşların işbu sözleşmede öngörülen gizlilik ilkelerine aykırı davranışlarından dolayı sorumlu olacağını, söz konusu üçüncü kişi, kurum ya da kuruluşların gizlilik ilkelerine riayet edeceğini, aykırılık hallerinden haberdar olduğu takdirde, derhal ve yazılı olarak işverene söz konusu aykırılık durumunu bildireceğini kabul ve taahhüt eder. </p>
+                                            <p>4.5.  Gizli bilgilerin ve kişisel verilerin işbu sözleşmeye aykırı olarak açıklanması, erişilmesine imkan sağlanması, sızdırılması veya benzeri davranışlarla bilgilerin ele geçirilmesine ortam sağlanması halinde işveren, masrafları işçiye ait olmak kaydıyla tüm yasal yollara başvurma ve uğradığı her türlü zararın giderimini işçiden ve diğerlerinden talep etme hakkına sahiptir.  </p>
+                                            5- SÜRE <p> 5.1. Hizmet sözleşmesinin eki niteliğindeki işbu sözleşme, taraflarca imzalandığı tarihte yürürlüğe girecek olup, işbu sözleşmeden doğan yükümlülükler hizmet sözleşmesinin geçerliliğini koruduğu müddetçe devam edecektir.  </p>
+                                            <p>5.2. Hizmet sözleşmesinin sona ermesi halinde dahi işbu sözleşme, hizmet sözleşmesinin sona erme tarihinden itibaren işletmeye ve ürünlere ait bilgiler ile kişisel verilerin anonim hale getirilmiş olanları ve işverenliğin izni olan bilgiler hariç ve kişisel veri sahibinin rızası hariç kişisel verilerin süresiz olarak gizliliği ve korunması olarak geçerliliğini koruyacaktır. </p>
+                                            6-   SÖZLEŞME DEĞİŞİKLİĞİ <p>İşbu sözleşme taraflarca daha önce özellikle gizlilik konusunda yapılmış olabilecek yazılı ve/veya sözlü tüm sözleşmelerin (burada sayılmamış bilgiler ve patent ve benzeri buluş sözleşmeleri hariç) yerine geçer. Sözleşme değişiklikleri ancak yazılı yapılabilir.  </p>
+                                            7- TEBLİGAT<p>  Tarafların işbu sözleşmenin atıfta bulunduğu sözleşmelerde, belge ve metinlerde belirttikleri adresleri tebligata elverişli adresleri olup herhangi bir değişiklik karşı tarafa yazılı olarak bildirilmemiş bulundukça bu adreslere yöneltilecek tebligatlar hukuken geçerli addolunacaktır.  </p>
+                                            8- YÜRÜRLÜK<p> İşbu sözleşme 8 (sekiz) maddeden oluşmakta olup taraflar arasında düzenlenmiş özgür iradeleriyle okunup kabul edilmiştir.   </p>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <div class="col text-center">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Çıkış</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </li>
+
+                    </ul>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+        <!-- Copyright -->
+        <div class="text-light text-center p-3" style="background-color:#252728">
+            <a href="https://www.facebook.com/ahmetssozeri/" target="_blank" class="fa fa-facebook"></a>
+            <a href="#" class="fa fa-twitter" target="_blank"></a>
+            © 2021 Copyright: Ahmet Sözeri</a>
+            <a href="https://www.instagram.com/ahmetsozerii/" target="_blank" class="fa fa-instagram"></a>
+            <a href="#" class="fa fa-youtube" target="_blank"></a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+    </div>
+    <script src="~/Content/bootstrapjs/bootstrap.min.js"></script>
+    <script src="~/Content/bootstrapjs/bootstrap.js"></script>
+    <script src="~/Content/bootstrapjs/bootstrap.esm.min.js"></script>
+    <script src="~/Content/bootstrapjs/bootstrap.bundle.min.js"></script>
+
+
+    <script>
+        // Get the video
+        var video = document.getElementById("myVideo");
+
+        // Get the button
+        var btn = document.getElementById("myBtn");
+
+        // Pause and play the video, and change the button text
+        function myFunction() {
+            if (video.paused) {
+                video.play();
+                btn.innerHTML = "Pause";
+            } else {
+                video.pause();
+                btn.innerHTML = "Play";
+            }
+        }
+    </script>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+</body>
+
+</html>
+
+<!--Ahmet Sözeri-->

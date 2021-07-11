@@ -1,0 +1,33 @@
+﻿@using SinemaBiletOtomasyonu.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Haber>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AnaLayout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Haber", FormMethod.Get))
+{
+    <div class="container">
+        <h2>Bu Hafta Neler Oldu</h2>
+
+        <div class="row">
+            @foreach (var k in Model)
+            {
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <a href="/Detay/Index/@k.id" target="_blank">
+                            <img src="~/images/@k.KucukResim" alt="Lights" style="width:100%">
+                            <div class="caption">
+                                <p>@k.Title</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+}
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))

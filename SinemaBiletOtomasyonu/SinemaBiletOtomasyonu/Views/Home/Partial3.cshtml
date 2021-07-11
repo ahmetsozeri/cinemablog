@@ -1,0 +1,95 @@
+﻿@model SinemaBiletOtomasyonu.Models.Siniflar.Musteri
+
+
+@using (Html.BeginForm("ProfilGuncelle", "Home", FormMethod.Post))
+{
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold">SinemaDevi</span><span class="text-black-50">Mail</span><span> </span></div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profil Ayarları</h4>
+                    </div>
+                    @Html.HiddenFor(x => x.MusteriID)
+                    
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <label class="labels">Ad</label> @Html.TextBoxFor(x => x.MusteriAd, new { @class = "form-kontrol" })
+                        </div>
+                        <div class="col-md-6">
+                            <label class="labels">Soyad</label> @Html.TextBoxFor(x => x.MusteriSoyad, new { @class = "form-kontrol" })
+                        </div>
+                    </div>
+                   
+                        <div class="row mt-3">
+                            
+                                <div class="col-md-12"><label class="labels">Kullanıcı Adı</label><br />@Html.TextBoxFor(x => x.KullaniciAdi, new { @class = "form-kontrol" })</div>
+                                <div class="col-md-12"><label class="labels">Şifre</label><br />@Html.TextBoxFor(x => x.Sifre, new { @class = "form-kontrol" })</div>
+                                <div class="col-md-12"><label class="labels">Şifre Tekrar</label><br />@Html.TextBoxFor(x => x.Sifre, new { @class = "form-kontrol" })</div>
+                                <div class="col-md-12"><label class="labels">E-Posta</label><br />@Html.TextBoxFor(x => x.ePosta, new { @class = "form-kontrol" })</div>
+                                <div class="col-md-12"><label class="labels">Telefon</label><br />@Html.TextBoxFor(x => x.Telefon, new { @class = "form-kontrol" })</div>
+                                <div class="col-md-12"><label class="labels">Adres</label><br />@Html.TextBoxFor(x => x.Adres, new { @class = "form-kontrol" })</div>
+</div>
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <label class="labels">Şehir</label>@Html.DropDownListFor(x => x.Plaka, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Profili Güncelle</button></div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+}
+    <style>
+        body {
+            background: #181818;
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #BA68C8
+        }
+
+        .profile-button {
+            background: rgb(99, 39, 120);
+            box-shadow: none;
+            border: none
+        }
+
+            .profile-button:hover {
+                background: #682773
+            }
+
+            .profile-button:focus {
+                background: #682773;
+                box-shadow: none
+            }
+
+            .profile-button:active {
+                background: #682773;
+                box-shadow: none
+            }
+
+        .back:hover {
+            color: #682773;
+            cursor: pointer
+        }
+
+        .labels {
+            font-size: 11px
+        }
+
+        .add-experience:hover {
+            background: #BA68C8;
+            color: #fff;
+            cursor: pointer;
+            border: solid 1px #BA68C8
+        }
+    </style>
+

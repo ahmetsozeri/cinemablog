@@ -1,0 +1,49 @@
+﻿@model SinemaBiletOtomasyonu.Models.Siniflar.Musteri
+@{
+    ViewBag.Title = "MusteriEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Müşteri Ekle</h2>
+<form class="form-group" method="post">
+    @Html.LabelFor(x => x.KullaniciAdi)
+    @Html.TextBoxFor(x => x.KullaniciAdi,
+    new { @class = "form-kontrol" })
+    <br />
+    @Html.LabelFor(x => x.Sifre)
+    @Html.TextBoxFor(x => x.Sifre,
+    new { @class = "form-kontrol" })
+    <br />
+    @Html.LabelFor(x => x.MusteriAd)
+    @Html.TextBoxFor(x => x.MusteriAd,
+    new { @class = "form-kontrol" })
+    <br />
+    @Html.LabelFor(x => x.MusteriSoyad)
+    @Html.TextBoxFor(x => x.MusteriSoyad,
+    new { @class = "form-kontrol" })
+    <br />
+    @Html.LabelFor(x => x.Telefon)
+    @Html.TextBoxFor(x => x.Telefon,
+    new { @class = "form-kontrol" })
+    <br />
+    @Html.LabelFor(x => x.ePosta)
+    @Html.TextBoxFor(x => x.ePosta,
+    new { @class = "form-kontrol" })
+    <br />
+    @Html.LabelFor(x => x.Sehir)
+    @Html.DropDownListFor(x => x.Plaka, (List<SelectListItem>)ViewBag.dgr1, new
+    {
+        @class = "form-control"
+    })
+    <br />
+    @Html.LabelFor(x => x.Adres)
+    @Html.TextBoxFor(x => x.Adres,
+    new { @class = "form-kontrol" })
+
+
+    <br />
+    <button class="btn btn-info">Ekle</button>
+
+
+</form>
+

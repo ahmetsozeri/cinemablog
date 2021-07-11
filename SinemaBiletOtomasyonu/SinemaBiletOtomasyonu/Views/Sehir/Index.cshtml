@@ -1,0 +1,45 @@
+﻿@using SinemaBiletOtomasyonu.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Sehir>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Şehirler</h2>
+
+@using (Html.BeginForm("Index", "Sehir", FormMethod.Get))
+{
+    <b> Arama Seçeneği: </b>@Html.RadioButton("option", "Plaka")  <text>Plaka</text> 
+    @Html.RadioButton("option", "SehirAdi") <text> Şehir Adı </text> 
+    @Html.RadioButton("option" , "Tumu") <text>Tümü</text>
+    @Html.TextBox("search") <input type = "submit"
+    name = "submit"
+    value = "Search"/>
+
+
+
+    <table class="table table-bordered" style="margin:20px">
+
+        <tr>
+            <th>Plaka</th>
+            <th>Şehir</th>
+        </tr>
+
+
+        @foreach (var k in Model)
+        {
+            <tr>
+                <td>@k.Plaka</td>
+                <td>@k.SehirAdi</td>
+            </tr>
+        }
+    </table>
+    }
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+
+    <a href="/Admin/Index" class="btn btn-dark">Admin Paneli</a>
+
+
+

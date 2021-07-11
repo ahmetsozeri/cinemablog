@@ -1,0 +1,129 @@
+﻿@using SinemaBiletOtomasyonu.Models.Siniflar
+@model List<Koltuk>
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AnaLayout.cshtml";
+}
+
+<div class="container" align="center">
+
+    <img src="~/images/perde.jpg" width="1100px" height="400px" />
+    <table class="table table-light border">
+        <tr>
+            @foreach (var x in Model)
+            {
+
+                <td class="btn btn-success m-1 text-dark btn btn-sm">@x.KoltukAdi</td>
+            }
+
+        </tr>
+        <tr>
+            <td>
+                @Html.Action("Partial7", "BiletDetay")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Action("Partial4", "BiletDetay")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Action("Partial5", "BiletDetay")
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.Action("Partial6", "BiletDetay")
+            </td>
+        </tr>
+
+
+    </table>
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Ödeme Adımına Geç</button>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-xxl-down">
+        <div class="modal-content">
+            <div class="modal-header  text-center">
+                <h3 class="modal-title w-100" id="exampleModalLabel">
+                    Ödeme Yap</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" align="center">
+
+                <div class="container mt-3 mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-5">
+                        <div class="d-flex flex-row align-items-center">
+                            <h4 class="text-uppercase mt-1">SinemaDevi</h4> <span class="ml-2">Ödeme</span>
+                        </div> <a href="index.html" class="cancel com-color">Anasayfaya dön</a>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="about">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex flex-row mt-1">
+
+                                    </div>
+
+                                </div>
+                                <p>Film öncesinde bilet kontrolü yapılacağı için lütfen film başlamadan en az 10 dk önce salonda bulununuz. Diğer izleyicilerimizin seyir keyfinin bozulmaması açısından film başladıktan sonra salona girmemeye özen gösterelim. İyi seyirler</p>
+                                <div class="p-2 d-flex justify-content-between bg-pay align-items-center"> <span>7. Koğuştaki Mucize</span> <span>13:30</span> </div>
+                                <hr>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="d-flex flex-row mt-1">
+                                        <h6>Toplam Tutar</h6>
+                                        <h6 class="text-success font-weight-bold ml-1">47.15₺</h6>
+                                    </div>
+                                    <div class="d-flex flex-row align-items-center com-color"> <i class="fa fa-plus-circle"></i> <span class="ml-1">Kart Ekle</span> </div>
+                                </div>
+                                <p>Verified by Visa ve MasterCard SecureCode logoları bulunan sanal işyerlerinden yapılan online alışverişler Visa ve MasterCard güvencesi altındadır.</p>
+                                <div class="d-flex flex-column">
+                                    <label class="radio">
+                                        <input type="radio" name="gender" value="MALE" checked>
+                                        <div class="d-flex justify-content-between"> <span>VISA</span> <span>**** 5645</span> </div>
+                                    </label> <label class="radio">
+                                        <input type="radio" name="gender" value="FEMALE">
+                                        <div class="d-flex justify-content-between"> <span>MASTER CARD</span> <span>**** 5069</span> </div>
+                                    </label>
+                                </div>
+                                <div class="buttons"> <button class="btn btn-success btn-block">Ödeme Yap</button> </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2"> </div>
+                        <div class="col-md-4">
+                            <div class="bg-pay p-3">
+                                <span class="font-weight-bold">Sipariş Özeti</span>
+
+                                <hr>
+                                <div class="d-flex justify-content-between mt-2"> <span class="lh-16 fw-500">7. Koşuştaki Mucize </span> <span>Salon-5</span> </div>
+                                <div class="d-flex justify-content-between mt-2"> <span class="lh-16 fw-500">13:30</span> <span>Koltuk K-15 K-17</span> </div>
+                                <hr>
+                                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Bilet Tutarı</span> <span>40₺</span> </div>
+                                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">İndirim</span> <span>0.0₺</span> </div>
+                                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">İndirim Yüzdesi(0%)</span> <span>$0.0₺</span> </div>
+                                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">KDV(18%) </span> <span>7.15₺</span> </div>
+
+                                <hr>
+                                <div class="d-flex justify-content-between mt-2"> <span class="fw-500">Toplam </span> <span class="text-success">47.15₺</span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <div class="col text-center">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Çıkış</button>
+                    <button type="button" class="btn btn-dark">Öde</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br />

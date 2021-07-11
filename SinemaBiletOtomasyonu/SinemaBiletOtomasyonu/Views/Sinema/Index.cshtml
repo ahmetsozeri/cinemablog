@@ -1,0 +1,64 @@
+﻿@using SinemaBiletOtomasyonu.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Sinema>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Sinema", FormMethod.Get))
+{
+
+    <b> Arama Seçeneği: </b>@Html.RadioButton("option", "SinemaAdi") <text>Sinema Adı</text>
+    @Html.RadioButton("option", "Sehir.SehirAdi") <text> Şehir </text>
+    @Html.RadioButton("option", "Tumu") <text>Tümü</text>
+    @Html.TextBox("search")
+    <input type="submit"
+           name="submit"
+           value="Search" />
+
+    <table class="table table-bordered" style="margin:20px">
+
+        <tr>
+            <th>Sinema ID</th>
+            <th>Sinema Adı</th>
+            <th>Şehir</th>
+            <th>Salonlar</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+        </tr>
+
+        @foreach (var k in Model)
+        {
+
+            <tr>
+                <td>
+                    @k.SinemaID
+                </td>
+                <td>
+                    @k.SinemaAdi
+                </td>
+
+                <td>
+                    @k.Sehir.SehirAdi
+                </td>
+                <td>
+                </td>
+
+
+                <td> <a href="/Sinema/SinemaSil/@k.SinemaID" class="btn btn-danger"><font color="white">Sil</font></a></td>
+                <td> <a href="/Sinema/SinemaGetir/@k.SinemaID" class="btn btn-warning"><font color="white">Güncelle</font></a></td>
+                @*<td> <a href="/Departman/DepartmanPersonelSatis/@k.Personelid" class="btn btn-default" style="background-color:burlywood; color:white;">Detaylar</a></td>*@
+
+            </tr>
+        }
+    </table>
+    <a href="/Sinema/SinemaEkle" class="btn btn-info">Sinema Ekle</a>
+}
+
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+<br />
+<br />
+

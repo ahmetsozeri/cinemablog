@@ -1,0 +1,81 @@
+﻿@using SinemaBiletOtomasyonu.Models.Siniflar
+@model List<Film>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AnaLayout.cshtml";
+}
+
+@Styles.Render("~/Context/css")
+
+<style type="text/css" style="display: none !important;">
+    #SlideshowImages {
+        position: relative;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    }
+
+        #SlideshowImages > div {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+        }
+</style>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#slideshow > div:gt(0)").hide();
+        setInterval(function () {
+            $('#SlideshowImages > div:first').fadeOut(7000).next().fadeIn(7000).end().appendTo('#SlideshowImages');
+        }, 3000);
+    });
+</script>
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div id="SlideshowImages">
+            @foreach (var item in Model)
+            {
+                <div> <img src="@item.Afis" height="300" width="1100"> </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+
+</br>
+<br />
+<br></br>
+<br />
+<br></br>
+<br />
+<br></br>
+<br />
+<br></br>
+<br />
+
+
+
+<div class="row" style="margin:40px;">
+    @foreach (var k in Model)
+    {
+
+        <div class="col-3">
+
+            <div class="card" style="width: 18rem;">
+                <img src="@k.Afis" height="150" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@k.FilmAdi</h5>
+                    <p class="card-text">@k.KisaAciklama.Substring(0, 50)...</p>
+                    <a href="/BiletDetay/Index/@k.FilmID" class="btn btn-dark">Bilet Al</a>
+                </div>
+            </div>
+            <br />
+
+        </div>
+    }
+</div>
+
+

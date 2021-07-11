@@ -1,0 +1,77 @@
+﻿@using SinemaBiletOtomasyonu.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Haber>
+
+@{
+    ViewBag.Title = "Index2";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Index2", "Haber", FormMethod.Get))
+{
+
+    <b> Arama Seçeneği: </b>@Html.RadioButton("option", "id") <text>Haber id</text>
+    @Html.RadioButton("option", "PostedDate") <text> Post Tarihi </text>
+    @Html.RadioButton("option", "Title") <text> Başlık </text>
+    @Html.RadioButton("option", "Tumu") <text>Tümü</text>
+    @Html.TextBox("search")
+    <input type="submit"
+           name="submit"
+           value="Search" />
+
+    <table class="table table-bordered" style="margin:20px">
+
+        <tr>
+            <th>Haber ID</th>
+            <th>Başlık</th>
+            <th>Meta Başlık</th>
+            <th>Kısa Açıklama</th>
+
+            <th>Post Tarihi</th>
+
+            <th>Küçük Resim</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Detay</th>
+
+        </tr>
+
+        @foreach (var k in Model)
+        {
+
+            <tr>
+                <td>
+                    @k.id
+                </td>
+                <td>
+                    @k.Title
+                </td>
+                <td>
+                    @k.Metatitle
+                </td>
+                <td>
+                    @k.Shortinfo.Substring(0, 10)
+                </td>
+
+                <td>
+                    @k.PostedDate
+                </td>
+
+
+
+                <td>
+                    <img src="~/images/@k.KucukResim" width="50px" height="50px" />
+                </td>
+                <td> <a href="/Haber/HaberSil/@k.id" class="btn btn-danger"><font color="white">Sil</font></a></td>
+                <td> <a href="/Haber/HaberGetir/@k.id" class="btn btn-warning"><font color="white">Güncelle</font></a></td>
+                <td> <a href="/Detay/Index/@k.id" class="btn btn-primary"><font color="white">Detay</font></a></td>
+
+            </tr>
+        }
+    </table>
+    <a href="/Haber/YeniHaber" class="btn btn-info">Haber Ekle</a>
+    <br />
+    <br />
+}
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index2", new { page }))

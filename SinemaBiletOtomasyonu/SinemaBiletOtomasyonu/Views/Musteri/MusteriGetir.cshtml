@@ -1,0 +1,93 @@
+﻿@model SinemaBiletOtomasyonu.Models.Siniflar.Musteri
+@{
+    ViewBag.Title = "MusteriGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Müşteri Güncelleme Sayfası</h2>
+
+@using (Html.BeginForm("MusteriGuncelle", "Musteri", FormMethod.Post))
+{
+<table style="margin-left:50px">
+    <div class="form-group">
+        @Html.HiddenFor(x => x.MusteriID)
+        <tr>
+            <td> @Html.LabelFor(x => x.KullaniciAdi)</td>
+            <td>
+                @Html.TextBoxFor(x => x.KullaniciAdi,
+             new { @class = "form-kontrol" })
+            <td>
+        </tr>
+        <br />
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.Sifre)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Sifre,
+             new { @class = "form-kontrol" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.MusteriAd)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.MusteriAd,
+             new { @class = "form-kontrol" })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.MusteriSoyad)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.MusteriSoyad,
+             new { @class = "form-kontrol" })
+            </td>
+        </tr>
+        <tr>
+        <td>
+            @Html.LabelFor(x => x.Telefon)
+        </td>
+        <td>
+            @Html.TextBoxFor(x => x.Telefon,
+         new { @class = "form-kontrol" })
+        </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.ePosta)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.ePosta,
+             new { @class = "form-kontrol" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.Sehir)
+            </td>
+            <td>
+                @Html.DropDownListFor(x => x.Plaka, (List<SelectListItem>)ViewBag.dgr1, new
+        {
+           @class = "form-control"
+        })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.Adres)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Adres,
+             new { @class = "form-kontrol" })
+            </td>
+        </tr>
+    </div>
+</table>
+    <button class="btn btn-info" style="margin-left:100px">Güncelle</button>
+
+}
+

@@ -1,0 +1,22 @@
+﻿@model SinemaBiletOtomasyonu.Models.Siniflar.FilmTur
+@{
+    ViewBag.Title = "FilmTurEkle";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Tür Ekle</h2>
+<form class="form-group" method="post">
+    <table>
+        <tr>
+            <td>
+                @Html.LabelFor(x => x.TurAdi)
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.TurAdi, new { @class = "form-control"})
+            </td>
+        </tr>
+    </table>
+    <button class="btn btn-info">Ekle</button>
+</form>
+
+

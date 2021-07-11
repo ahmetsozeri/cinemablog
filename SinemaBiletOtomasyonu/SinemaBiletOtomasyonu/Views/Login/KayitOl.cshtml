@@ -1,0 +1,90 @@
+﻿@model SinemaBiletOtomasyonu.Models.Siniflar.Musteri
+
+@{
+    ViewBag.Title = "KayitOl";
+    Layout = "~/Views/Shared/_AnaLayout.cshtml";
+}
+
+@using (Html.BeginForm("KayitOl", "Login", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="mx-5">
+        <div class="row">
+
+            <div class="col-10">
+
+                <table class="table">
+
+                    <tbody>
+                        <tr>
+                            <th scope="row">Kullanıcı Adı</th>
+                            <td>
+                                <div class="col-5"><input class="form-control" name="KullaniciAdi" type="text" placeholder="Kullanıcı adı giriniz"></div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Şifre</th>
+                            <td><div class="col-5"><input class="form-control" name="Sifre" type="text" placeholder="Şifreyi giriniz"></div></td>
+
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Şifre Tekrar</th>
+                            <td><div class="col-5"><input class="form-control" name="Sifre" type="text" placeholder="Şifreyi tekrar giriniz"></div></td>
+
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Ad</th>
+                            <td><div class="col-5"><input class="form-control" name="MusteriAd" type="text" placeholder="Adınızı giriniz"></div></td>
+
+                        </tr>
+
+                        <tr>
+                            <th scope="row">Soyad</th>
+                            <td><div class="col-5"><input class="form-control" name="MusteriSoyad" type="text" placeholder="Soyadınızı giriniz"></div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Telefon</th>
+                            <td><div class="col-5"><input class="form-control" name="Telefon" type="text" placeholder="0(5XX)XXX XXXX"></div></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">E-Posta</th>
+                            <td><div class="col-5"><input class="form-control" name="ePosta" type="text" placeholder="Mail adresinizi giriniz"></div></td>
+                        </tr>
+
+                        <tr>
+                            <th scope="row">İl</th>
+                            <td> @Html.LabelFor(x => x.Sehir)</td>
+
+                            <td> @Html.DropDownListFor(x => x.Plaka, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control", @style = "width: 185px;" })</td>
+
+
+                            <td></td>
+                        </tr>
+
+
+
+                        <tr>
+                            <th scope="row">Adres</th>
+                            <td>
+                                <textarea class="form-control" name="Adres" id="exampleFormControlTextarea1" rows="3" placeholder="Açık adresinizi giriniz"></textarea>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td></td>
+                            <td colspan="3"><button type="submit" class="btn btn-dark">Kayıt Ol</button></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+}

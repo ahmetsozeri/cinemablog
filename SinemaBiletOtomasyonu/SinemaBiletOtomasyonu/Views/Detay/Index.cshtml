@@ -1,0 +1,18 @@
+﻿@model SinemaBiletOtomasyonu.Models.Siniflar.Class1
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AnaLayout.cshtml";
+}
+
+@foreach (var x in Model.Deger1)
+{
+<h3> @x.Title</h3>
+<div>
+    @Html.Raw(x.İcerik)
+</div>
+}
+<script>
+    $("<div />").html($("#summernote").code()).text();
+
+</script>

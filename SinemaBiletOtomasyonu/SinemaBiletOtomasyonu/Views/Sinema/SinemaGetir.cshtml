@@ -1,0 +1,32 @@
+﻿@model SinemaBiletOtomasyonu.Models.Siniflar.Sinema
+
+@{
+    ViewBag.Title = "SinemaGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Sinema Güncelleme Sayfası</h2>
+@using (Html.BeginForm("SinemaGuncelle", "Sinema", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.HiddenFor(x => x.SinemaID);
+        @Html.LabelFor(x => x.SinemaAdi)
+        @Html.TextBoxFor(x => x.SinemaAdi,
+        new { @class = "form-kontrol" })
+        <br />
+        @Html.LabelFor(x => x.Sehir)
+        @Html.DropDownListFor(x => x.Plaka, (List<SelectListItem>)ViewBag.dgr1, new
+        {
+            @class = "form-control"
+        })
+       
+        <button class="btn btn-info">Güncelle</button>
+
+
+    </div>
+
+
+}
+
+
+

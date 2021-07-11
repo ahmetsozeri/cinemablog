@@ -1,0 +1,150 @@
+﻿@using SinemaBiletOtomasyonu.Models.Siniflar
+@model List<Koltuk>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AnaLayout.cshtml";
+}
+
+<style>
+    .seat {
+        height: 20px;
+        width: 20px;
+        border: 1px solid gray;
+        cursor: pointer;
+        background-color: white;
+    }
+
+    .walk {
+        padding-left: 20px;
+    }
+
+    #driver {
+        background-color: gray;
+        height: 100px;
+        border-radius: 50%;
+    }
+
+
+    .box {
+        background-color: #181818;
+        text-align: center;
+        border-radius: 15px;
+        color: white;
+        font-family: Verdana, Geneva, sans-serif;
+        height: 200px;
+        width: 500px;
+        padding: 8px;
+        font-size: 15px;
+    }
+
+        .box p {
+            color: white;
+            font-weight: 400;
+            padding-top: 50%;
+        }
+
+    p.rounded {
+        border-style: rounded;
+    }
+
+
+    .cancel {
+        text-decoration: none
+    }
+
+    .bg-pay {
+        background-color: #eee;
+        border-radius: 2px
+    }
+
+    .com-color {
+        color: #8f37aa !important
+    }
+
+    .radio {
+        cursor: pointer
+    }
+
+    label.radio input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        visibility: hidden;
+        pointer-events: none
+    }
+
+    label.radio div {
+        padding: 7px 14px;
+        border: 2px solid #8f37aa;
+        display: inline-block;
+        color: #8f37aa;
+        border-radius: 3px;
+        text-transform: uppercase;
+        width: 100%;
+        margin-bottom: 10px
+    }
+
+    label.radio input:checked + div {
+        border-color: #8f37aa;
+        background-color: #8f37aa;
+        color: #fff
+    }
+
+    .fw-500 {
+        font-weight: 400
+    }
+
+    .lh-16 {
+        line-height: 16px
+    }
+</style>
+<br />
+
+    <div class="container" align="center">
+
+        <table class="table table-light border">
+
+            <tr>
+                @foreach (var x in Model)
+                {
+                    <td class="btn btn-success m-1 text-dark btn btn-sm">@x.KoltukAdi</td>
+                    
+                }
+               
+
+            </tr>
+            
+            </table>
+
+    </div>
+
+
+
+@*<script>
+    var btn4 = document.querySelector("#btn4");
+
+    btn4.onclick = function () {
+        btn btn - danger// tıklanan butonun zemin rengini kırmızı yap
+        this.style.color = "#ffffff";//tıklanan butonun yazı rengini beyaz yap
+    }
+</script>*@
+
+
+
+
+    <script>
+
+        allSeats = document.querySelectorAll('.seat');
+        for (var i = 0; i < allSeats.length; i++) {
+            var seat = allSeats[i];
+            seat.addEventListener('click', function () {
+                var bgclr = this.style.backgroundColor;
+                if (bgclr == 'green')
+                    this.style.backgroundColor = 'white'
+                else
+                    this.style.backgroundColor = 'green'
+                debugger
+            }, false);
+        }
+
+    </script>

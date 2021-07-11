@@ -1,0 +1,27 @@
+﻿@model SinemaBiletOtomasyonu.Models.Siniflar.FilmTur
+@{
+    ViewBag.Title = "FilmTurGetir";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Tür Güncelle</h2>
+<br />
+@using (Html.BeginForm("TurGuncelle", "FilmTur", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(x => x.TurAdi)
+        @Html.TextBoxFor(x => x.TurAdi,
+            new
+            {
+                @class = "form-control"
+            })
+        @Html.HiddenFor(x => x.TurID)
+
+    </div>
+
+    <button class="btn btn-warning">Güncelle</button>
+}
+
+
+

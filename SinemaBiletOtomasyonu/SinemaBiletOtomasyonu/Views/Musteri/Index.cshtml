@@ -1,0 +1,83 @@
+﻿@using SinemaBiletOtomasyonu.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Musteri>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("Index", "Musteri", FormMethod.Get))
+{
+
+    <b> Arama Seçeneği: </b>@Html.RadioButton("option", "Telefon") <text>Telefon</text>
+    @Html.RadioButton("option", "ePosta") <text> E-Posta </text>
+    @Html.RadioButton("option", "Tumu") <text>Tümü</text>
+    @Html.TextBox("search")
+    <input type="submit"
+           name="submit"
+           value="Search" />
+
+
+    <table class="table table-bordered" style="margin:20px">
+
+        <tr>
+            <th>Müşteri ID</th>
+            <th>Kullanıcı Adı</th>
+            <th>Şifre</th>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Telefon</th>
+            <th>E- Posta</th>
+            <th>İl</th>
+            <th>Adres</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+
+        </tr>
+
+        @foreach (var k in Model)
+        {
+
+            <tr>
+                <td>
+                    @k.MusteriID
+                </td>
+                <td>
+                    @k.KullaniciAdi
+                </td>
+                <td>
+                    @k.Sifre
+                </td>
+                <td>
+                    @k.MusteriAd
+                </td>
+                <td>
+                    @k.MusteriSoyad
+                </td>
+                <td>
+                    @k.Telefon
+                </td>
+                <td>
+                    @k.ePosta
+                </td>
+                <td>
+                    @k.Sehir.SehirAdi
+                </td>
+                <td>
+                    @k.Adres
+                </td>
+                <td> <a href="/Musteri/MusteriSil/@k.MusteriID" class="btn btn-danger"><font color="white">Sil</font></a></td>
+                <td> <a href="/Musteri/MusteriGetir/@k.MusteriID" class="btn btn-warning"><font color="white">Güncelle</font></a></td>
+                @*<td> <a href="/Departman/DepartmanPersonelSatis/@k.Personelid" class="btn btn-default" style="background-color:burlywood; color:white;">Detaylar</a></td>*@
+
+            </tr>
+        }
+    </table>
+    <a href="/Musteri/MusteriEkle" class="btn btn-info">Müşteri Ekle</a>
+    <br />
+    <br />
+
+}
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))

@@ -1,0 +1,16 @@
+﻿@*@using SinemaBiletOtomasyonu.Models.Siniflar
+@model List<Sinema>
+
+
+
+@foreach (var item in Model)
+{
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"
+                   name="SelectedFruits"
+                   value="@item.SinemaID"
+                   @if (item.IsChecked.Contains(item.SinemaID)) { <text> checked </text> } /> @item.SinemaAdi
+            </label>
+        </div>
+    }*@

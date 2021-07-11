@@ -1,0 +1,79 @@
+﻿@using SinemaBiletOtomasyonu.Models.Siniflar
+@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Film>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<br />
+<h2>Filmler</h2>
+
+@using (Html.BeginForm("Index", "Film", FormMethod.Get))
+{
+
+    <b> Arama Seçeneği: </b>@Html.RadioButton("option", "FilmAdi") <text>Film Adı</text>
+    @Html.RadioButton("option", "FilmTur.TurAdi") <text> Tür </text>
+    @Html.RadioButton("option", "Tumu") <text>Tümü</text>
+    @Html.TextBox("search")
+    <input type="submit"
+           name="submit"
+           value="Search" />
+
+    <table class="table table-bordered" style="margin:20px">
+
+        <tr>
+            <th>Film ID</th>
+            <th>Film Adı</th>
+            <th>Süresi</th>
+            <th>Tür</th>
+            <th>Fiyat</th>
+            <th>Açıklama</th>
+            <th>Afiş</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+
+        </tr>
+
+        @foreach (var k in Model)
+        {
+
+            <tr>
+                <td>
+                    @k.FilmID
+                </td>
+                <td>
+                    @k.FilmAdi
+                </td>
+                <td>
+                    @k.FilmSuresi
+                </td>
+                <td>
+                    @k.FilmTur.TurAdi
+                </td>
+                <td>
+                    @k.Fiyat
+                </td>
+                <td>
+                    @k.Aciklama.Substring(0, 5)
+                </td>
+                <td>
+                    <img src="@k.Afis" width="50px" height="50px"
+                         onclick="this.src = '@k.Afis'; this.height = 150; this.width = 150;0"
+                         ondblclick="this.src='@k.Afis'; this.width=150; this.height=150;" />
+                </td>
+                <td> <a href="/Film/FilmSil/@k.FilmID" class="btn btn-danger"><font color="white">Sil</font></a></td>
+                <td> <a href="/Film/FilmGetir/@k.FilmID" class="btn btn-warning"><font color="white">Güncelle</font></a></td>
+                @*<td> <a href="/Departman/DepartmanPersonelSatis/@k.Personelid" class="btn btn-default" style="background-color:burlywood; color:white;">Detaylar</a></td>*@
+
+            </tr>
+        }
+    </table>
+    <a href="/Film/FilmEkle" class="btn btn-info">Film Ekle</a>
+}
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+
+<br />
+<br />
+
